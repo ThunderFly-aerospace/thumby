@@ -1,1 +1,4 @@
-from thumb-py import myfunctions
+from thumby import myfunctions
+
+def test_basic():
+    pass

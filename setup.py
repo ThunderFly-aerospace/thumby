@@ -2,14 +2,14 @@ from setuptools import find_packages, setup
 
 setup(
     name='thumb-py',
-    packages=find_packages(include=['thumb-py']),
+    packages=find_packages(include=['thumby']),
     version='0.1.0',
     description='Simple python library for inserting .png thumbnails into gcode files.',
     author='Dusan Jansky',
     license='MIT',
-    install_requires=[],
+    install_requires=['os', 'subprocess', 'sys', 'Pillow'],
     setup_requires=['pytest-runner'],
-    tests_require=['pytest==4.4.1'],
+    tests_require=['pytest'],
     test_suite='tests',
 )
 
