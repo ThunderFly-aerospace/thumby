@@ -1,0 +1,8 @@
+README.md
+setup.py
+thumb-py/__init__.py
+thumb-py/myfunctions.py
+thumb_py.egg-info/PKG-INFO
+thumb_py.egg-info/SOURCES.txt
+thumb_py.egg-info/dependency_links.txt
+thumb_py.egg-info/top_level.txt
