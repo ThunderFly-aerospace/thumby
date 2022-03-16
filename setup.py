@@ -7,7 +7,7 @@ setup(
     description='Simple python library for inserting .png thumbnails into gcode files.',
     author='Dusan Jansky',
     license='MIT',
-    install_requires=['os', 'subprocess', 'sys', 'Pillow'],
+    install_requires=['Pillow>=9.0.1'],
     setup_requires=['pytest-runner'],
     tests_require=['pytest'],
     test_suite='tests',

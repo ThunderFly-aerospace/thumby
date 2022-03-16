@@ -5,9 +5,9 @@ from PIL import Image
 HEADER_BEG="; thumbnail begin "
 HEADER_END="; thumbnail end"
 
-WIDTH_NORMAL, HEIGHT_NORMAL = 220, 124
-WIDTH_MINI, HEIGHT_MINI = 16, 16
-WIDTH_LARGE, HEIGHT_LARGE = 240, 320
+WIDTH_NORMAL,   HEIGHT_NORMAL   = 220,  124
+WIDTH_MINI,     HEIGHT_MINI     = 16,   16
+WIDTH_LARGE,    HEIGHT_LARGE    = 240,  320
 
 
 def insert_png_to_gcode_normal(path_to_png, path_to_gcode):
@@ -53,7 +53,7 @@ def insert_png_to_gcode_custom(path_to_png, path_to_gcode, width=WIDTH_NORMAL, h
 
 
 def resize_and_save_image(png_filepath, target_width=WIDTH_NORMAL, target_height=HEIGHT_NORMAL, tmpFile="tmp.png"):
-    """
+    '''
     Saves resized file as tmpFile. Default name 'tmp.png'.
     Return value is 'tmpFile path'
     -> default size of thumbnail: 220x124
@@ -61,7 +61,7 @@ def resize_and_save_image(png_filepath, target_width=WIDTH_NORMAL, target_height
     -> normal   220x124
     -> mini     16x16
     -> large    240x320
-    """
+    '''
     try:
         with Image.open(png_filepath) as img:
             size = img.size
@@ -98,7 +98,7 @@ def insert_header_to_gcode(header, gcode_filepath):
 
 
 def generate_base64(source_path):
-    """returns base64 generated from source path (.png)"""
+    '''returns base64 generated from source path (.png)'''
     try:
         output = subprocess.run(["base64", source_path], capture_output=True, text=True)
         if (output.returncode != 0):
@@ -111,7 +111,7 @@ def generate_base64(source_path):
 
 
 def wrap_as_thumbnail(img_as_base64, img_w, img_h):
-    """returns wrapped content as str"""
+    '''returns wrapped content as str'''
     img_as_base64 = img_as_base64.replace("\n","")
     
     LINE_LEN = 78
