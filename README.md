@@ -1,4 +1,14 @@
 # thumb-py
+## Table of Content
+1. [Annotation](#1-annotation)
+2. [Example of Usage](#2-example-of-usage)
+    + [Insert Thumbnails](#insert-thumbnails)
+    + [Delete Thumbnails](#delete-thumbnails)
+    + [Recommanded Usage](#recommanded-usage)
+3. [Install](#3-install)
+4. [List of Functions](#4-list-of-functions)
+5. [Technical Details of Implementations](#5-technical-details-of-implementations)
+
 ## 1. Annotation
 Simple python library for inserting .png thumbnails into gcode files.
 ## 2. Example of Usage
