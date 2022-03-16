@@ -30,7 +30,7 @@ import thumby
 pathToPng = "path/to/png/file.png"
 pathToGcode = "path/to/gcodeFile.gcode"
 
-insert_png_to_gcode_custom(pathToPng, pathToGcode)
+insert_png_to_gcode_custom(pathToPng, pathToGcode, width, height)
 ```
 ### Delete Thumbnails
 To delete all tree sizes use script bellow. Functions `delete thumbnail_*()` will delete all thumbnails of set size found in given gcode.
