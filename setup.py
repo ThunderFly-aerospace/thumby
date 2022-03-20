@@ -1,7 +1,7 @@
 from setuptools import find_packages, setup
 
 setup(
-    name='thumb-py',
+    name='thumby',
     packages=find_packages(include=['thumby']),
     version='0.1.0',
     description='Simple python library for inserting .png thumbnails into gcode files.',
