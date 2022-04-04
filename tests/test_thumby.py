@@ -1,4 +1,4 @@
-from thumby import myfunctions
+import thumby
 
 def test_dependencies():
     import PIL
