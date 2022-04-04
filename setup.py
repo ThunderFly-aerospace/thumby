@@ -1,16 +1,25 @@
-from setuptools import find_packages, setup
+from setuptools import setup
+
+
+with open('README.md', 'r') as freadme:
+    long_description = freadme.read()
 
 setup(
     name='thumby',
-    packages=find_packages(include=['thumby']),
-    version='0.1.0',
-    description='Simple python library for inserting .png thumbnails into gcode files.',
+    version='0.2.0',
+    url='https://github.com/ThunderFly-aerospace/thumby/',
     author='Dusan Jansky',
+    description='Simple python library for inserting .png thumbnails into gcode files.',
+    long_description=long_description,
+    long_description_content_type="text/markdown",
+    py_modules=['thumby'],
+    package_dir={'':'src'},
     license='MIT',
     install_requires=['Pillow>=9.0.1'],
-    setup_requires=['pytest-runner'],
-    tests_require=['pytest'],
-    test_suite='tests',
+    extras_require = {
+        'dev': [
+            'pytest-runner',
+            'pytest',
+        ],
+    },
 )
-
-# TODO customise requirments
