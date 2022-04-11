@@ -44,7 +44,7 @@ If error didn't appear your thumbnail should be inserted to the gcode file.
 
 
 ###### Differences Between Inserts
-The CNC printers supportes three sizes of thumbnails. I recommand insert via option `--insert-all`.
+3D printers supportes three sizes of thumbnails. I recommand insert via option `--insert-all`.
 If you want for example use different thumbnails for different sizes, you can insert thumbnails one by one with options: `--insert-mini`, `--insert-normal` and `--insert-large`.
 ##### Clear of Thumbnail
 Delete thumbnails from your gcode file. Thumbnails in gcode have to be formated correctly. Script doesn't remove comments or empty lines.
