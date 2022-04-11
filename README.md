@@ -40,6 +40,7 @@ Insert thumbnails to your gcode from pngfile.
 - Command to run:
   
   `python3 gcode_img_inserter.py --insert-all thumbnail_of_model.png model_of_vader_mask.gcode`
+  
 If error didn't appear your thumbnail should be inserted to the gcode file.
 
 
