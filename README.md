@@ -6,6 +6,8 @@
     + [Delete Thumbnails](#delete-thumbnails)
     + [Recommanded Usage](#recommanded-usage)
 3. [Install](#3-install)
+    + [Using pip](#using-pip)
+    + [For developers](#for-developers)
 4. [List of Functions](#4-list-of-functions)
 5. [Technical Details of Implementations](#5-technical-details-of-implementations)
 
@@ -83,6 +85,21 @@ insert_png_to_gcode_mini(pathToPng, pathToGcode)
 ```
 
 ## 3. Install
+### Using pip
+If you use pip, you can install thumby with:
+```python
+pip install thumby
+```
+### For developers
+For development purposes git-clone this repo and run
+```python
+pip install .
+```
+For dev version
+```python
+pip install .[dev]
+```
+
 ## 4. List of Functions
 
 ```python
