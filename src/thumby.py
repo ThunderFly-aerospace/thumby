@@ -45,7 +45,7 @@ def insert_png_to_gcode_custom(path_to_png, path_to_gcode, width=WIDTH_NORMAL, h
     '''
     tmpFile = resize_and_save_image(path_to_png, width, height)
     thumbnail = wrap_as_thumbnail(
-        generate_base64(tmpFile)
+        generate_base64(tmpFile), width, height
     )
     remove_file(tmpFile)
 
