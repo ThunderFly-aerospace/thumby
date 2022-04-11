@@ -45,7 +45,7 @@ def insert_png_to_gcode_custom(path_to_png, path_to_gcode, width=WIDTH_NORMAL, h
     '''
     tmpFile = resize_and_save_image(path_to_png, width, height)
     thumbnail = wrap_as_thumbnail(
-        generate_base64(tmpFile)
+        generate_base64(tmpFile), width, height
     )
     remove_file(tmpFile)
 
@@ -166,12 +166,20 @@ def delete_thumbnail_custom(path_to_gcode, width=WIDTH_NORMAL, height=WIDTH_NORM
         delete = False
         for line in content:
             if seeked_phrase in line:
+                print("true")
+                print(line)
                 delete = True
             elif HEADER_END in line: 
+                print("false")
+                print(line)
+                if delete:
+                    delete = False
+                    continue
                 delete = False
-                continue
+                
             
-            if delete or line.strip(" ") == ";\n":
+            if delete:
+                print(line)
                 continue
             else:
                 f.write(line)
