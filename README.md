@@ -54,6 +54,7 @@ Delete thumbnails from your gcode file. Thumbnails in gcode have to be formated 
 - Command to run:
   
   `python3 gcode_img_inserter.py --clear model_of_vader_mask.gcode`
+  
 If error didn't appear your thumbnails should be removed from the gcode file.
 
 
