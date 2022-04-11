@@ -2,9 +2,8 @@
 ## Table of Content
 1. [Annotation](#1-annotation)
 2. [Example of Usage](#2-example-of-usage)
-    + [Insert Thumbnails](#insert-thumbnails)
-    + [Delete Thumbnails](#delete-thumbnails)
-    + [Recommanded Usage](#recommanded-usage)
+    + [CLI Script `gcode_img_inserter.py`](#cli-script-gcode_img_inserterpy)
+    + [Write Your Own Script](#write-your-own-script)
 3. [Install](#3-install)
     + [Using pip](#using-pip)
     + [For developers](#for-developers)
@@ -16,14 +15,57 @@ Python library for inserting custom image thumbnails into gcode files. The origi
 Currently supported 3D printer is [Prusa MINI+](https://www.prusa3d.com/product/original-prusa-mini-semi-assembled-3d-printer-4/). 
 
 ## 2. Example of Usage
-Recommanded way of using when working with multiple gcodes is [this code](#recommanded-usage).
+### CLI Script `gcode_img_inserter.py`
+Requirment: [Install thumby](#3-install).
+Than you can use [`gcode_img_inserter.py`](https://github.com/ThunderFly-aerospace/thumby/tree/master/executable_scripts/gcode_img_inserter.py) script.
+#### How to use
+##### Help of The Script
+```
+Usage: gcode_img_inserter.py OPTION FILE1 [FILE2]
+Options:
+Insert - FILE1=png_file, FILE2=gcode_file - png file to gcode file:
+--insert-all	-iall	FILE1	FILE2	all size (recommanded)
+--insert-mini	-imini	FILE1	FILE2	mini size	16x16
+--insert-normal	-inorm	FILE1	FILE2	normal size	220x124
+--insert-large	-ilarge	FILE1	FILE2	large size	240x320
+Clear - FILE1=gcode_file - delete current thumbnails from gcode file
+--clear		-c	FILE1	(None)	deletes thumbnails from gcode file
+```
+##### Examples
+###### Insertion of Thumbnail
+Insert thumbnails to your gcode from pngfile.
+- My example files:
+  
+  `model_of_vader_mask.gcode`, `thumbnail_of_my_model.png`.
+- Command to run:
+  
+  `python3 gcode_img_inserter.py --insert-all thumbnail_of_model.png model_of_vader_mask.gcode`
+If error didn't appear your thumbnail should be inserted to the gcode file.
+
+
+###### Differences Between Inserts
+The CNC printers supportes three sizes of thumbnails. I recommand insert via option `--insert-all`.
+If you want for example use different thumbnails for different sizes, you can insert thumbnails one by one with options: `--insert-mini`, `--insert-normal` and `--insert-large`.
+##### Clear of Thumbnail
+Delete thumbnails from your gcode file. Thumbnails in gcode have to be formated correctly. Script doesn't remove comments or empty lines.
+- My example gcode file:
+  
+  `model_of_vader_mask.gcode`
+- Command to run:
+  
+  `python3 gcode_img_inserter.py --clear model_of_vader_mask.gcode`
+If error didn't appear your thumbnails should be removed from the gcode file.
+
+
+### Write Your Own Script
+Example of combinig more functions together is [this code block](#recommanded-usage). If you want to use other functions of `thumby.py` see [List of Functions](#4-list-of-functions).
 There are 3 recommanded size of thumbnails (width x height):
 - normal   220x124
 - mini     16x16
 - large    240x320
 Other formats may not display on 3D printers.
 
-### Insert Thumbnails
+#### Insert Thumbnails
 To insert all tree sizes use script bellow.
 ```python
 import thumby
@@ -46,7 +88,7 @@ pathToGcode = "path/to/gcodeFile.gcode"
 
 insert_png_to_gcode_custom(pathToPng, pathToGcode, width, height)
 ```
-### Delete Thumbnails
+#### Delete Thumbnails
 To delete all tree sizes use script bellow. Functions `delete thumbnail_*()` will delete all thumbnails of set size found in given gcode.
 ```python
 import thumby
@@ -65,7 +107,7 @@ import thumby
 pathToGcode = "path/to/gcodeFile.gcode"
 delete_thumbnail_custom(path_to_gcode, width, height)
 ```
-### Recommanded Usage
+#### Combine More Functions Together
 A script for inserting and replacing thumbnails into your gcodes.
 ```python
 import thumby
