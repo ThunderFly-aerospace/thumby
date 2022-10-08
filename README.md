@@ -218,7 +218,7 @@ Insert given header into gcode.
 Skips comments and free spaces 
 
 ```python
-extract_png_from_gcode_any_recommended(path_to_png: str, path_to_gcode: str):
+extract_png_from_gcode_any_recommended(path_to_png: str, path_to_gcode: str)
 ```
 Search for thumbnail of recommended size in gcode file and extract it to given path_to_png.
 Args:
@@ -231,25 +231,25 @@ recommended sizes (ordered by priority):
 -> large    240x320
 
 ```python
-extract_png_from_gcode_normal(path_to_png, path_to_gcode):
+extract_png_from_gcode_normal(path_to_png, path_to_gcode)
 ```
 Search for thumbnail (of size "normal") in gcode file and extract it to given path_to_png.
 recommended size "normal": 220x124
 
 ```python
-extract_png_from_gcode_mini(path_to_png, path_to_gcode):
+extract_png_from_gcode_mini(path_to_png, path_to_gcode)
 ```
 Search for thumbnail (of size "normal") in gcode file and extract it to given path_to_png.
 recommended size "mini": 16x16
 
 ```python
-extract_png_from_gcode_large(path_to_png, path_to_gcode):
+extract_png_from_gcode_large(path_to_png, path_to_gcode)
 ```
 Search for thumbnail (of size "normal") in gcode file and extract it to given path_to_png.
 recommended size "large": 240x320
 
 ```python
-extract_png_from_gcode_custom(path_to_png, path_to_gcode, width=WIDTH_NORMAL, height=HEIGHT_NORMAL):
+extract_png_from_gcode_custom(path_to_png, path_to_gcode, width=WIDTH_NORMAL, height=HEIGHT_NORMAL)
 ```
 Search for thumbnail in gcode file and extract it to given path_to_png.
 -> default size of thumbnail: 220x124  
