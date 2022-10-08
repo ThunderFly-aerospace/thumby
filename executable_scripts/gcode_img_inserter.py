@@ -12,15 +12,19 @@ def print_help(err_msg=''):
     print(bold("Usage:"), sys.argv[0], "OPTION", "FILE1", "[FILE2]")
     print(bold("Options:"))
     print(bold("Insert"),"- FILE1=png_file, FILE2=gcode_file - png file to gcode file:")
-    print("--insert-all\t-iall\tFILE1\tFILE2\tall size (recommanded)")
+    print("--insert-all\t-iall\tFILE1\tFILE2\tall size (recommended)")
     print("--insert-mini\t-imini\tFILE1\tFILE2\tmini size\t"+str(tb.WIDTH_MINI)+"x"+str(tb.HEIGHT_MINI))
     print("--insert-normal\t-inorm\tFILE1\tFILE2\tnormal size\t"+str(tb.WIDTH_NORMAL)+"x"+str(tb.HEIGHT_NORMAL))
     print("--insert-large\t-ilarge\tFILE1\tFILE2\tlarge size\t"+str(tb.WIDTH_LARGE)+"x"+str(tb.HEIGHT_LARGE))
+    print(bold("Extract"),"- FILE1=png_file, FILE2=gcode_file - extract png from gcode file:")
+    print("--extract-any\t-eany\tFILE1\tFILE2\tany recommended size")
+    print("--extract-mini\t-emini\tFILE1\tFILE2\tmini size\t"+str(tb.WIDTH_MINI)+"x"+str(tb.HEIGHT_MINI))
+    print("--extract-normal-enorm\tFILE1\tFILE2\tnormal size\t"+str(tb.WIDTH_NORMAL)+"x"+str(tb.HEIGHT_NORMAL))
+    print("--extract-large\t-elarge\tFILE1\tFILE2\tlarge size\t"+str(tb.WIDTH_LARGE)+"x"+str(tb.HEIGHT_LARGE))
     print(bold("Clear"),"- FILE1=gcode_file - delete current thumbnails from gcode")
     print("--clear\t\t-c\tFILE1\t(None)\tdeletes thumbnails from gcode file")
 
     exit()
-
 
 
 def clear_gcode(fpath_gcode):
@@ -29,17 +33,28 @@ def clear_gcode(fpath_gcode):
     tb.delete_thumbnail_large(fpath_gcode)
 
 
-def insert_gcode(opt, fpath_png, fpath_gcode):
+def process_arguments(opt, fpath_png, fpath_gcode):
+    # INSERTIONS ----------------------------------------------------------   
     if opt == '--insert-all' or opt == '--iall':
         tb.insert_png_to_gcode_mini(fpath_png, fpath_gcode)
         tb.insert_png_to_gcode_normal(fpath_png, fpath_gcode)
         tb.insert_png_to_gcode_large(fpath_png, fpath_gcode)
-    elif opt == '--insert-mini' or opt == '--imini':
-        tb.insert_png_to_gcode_mini(fpath_png, fpath_gcode)
-    elif opt == '--insert-normal' or opt == '--inorm':
+    elif opt == '--insert-normal' or opt == '-inorm':
         tb.insert_png_to_gcode_normal(fpath_png, fpath_gcode)
-    elif opt == '--insert-large' or opt == '--ilarge':
+    elif opt == '--insert-mini' or opt == '-imini':
+        tb.insert_png_to_gcode_mini(fpath_png, fpath_gcode)
+    elif opt == '--insert-large' or opt == '-ilarge':
         tb.insert_png_to_gcode_large(fpath_png, fpath_gcode)
+    # EXTRACTIONS ---------------------------------------------------------    
+    elif opt == '--extract-any' or opt == '-eany':
+        tb.extract_png_from_gcode_any_recommended(fpath_png, fpath_gcode)
+    elif opt == '--extract-normal' or opt == '-enorm':
+        tb.extract_png_from_gcode_normal(fpath_png, fpath_gcode)
+    elif opt == '--extract-mini' or opt == '-emini':
+        tb.extract_png_from_gcode_mini(fpath_png, fpath_gcode)
+    elif opt == '--extract-large' or opt == '-elarge':
+        tb.extract_png_from_gcode_large(fpath_png, fpath_gcode)
+    # HELP (when arg invalid) ----------------------------------------------   
     else:
         print_help()  
 
@@ -57,13 +72,13 @@ if __name__=='__main__':
             print_help("invalid filetype given " + fpath_gcode)
         clear_gcode(fpath_gcode)
     # insert gcode
-    elif len(sys.argv) >= 4 and opt.startswith('--insert') or opt.startswith('-i'):
+    elif len(sys.argv) >= 4 and (opt.startswith('--insert') or opt.startswith('-i') or opt.startswith('--extract') or opt.startswith('-e')):
         fpath_png = sys.argv[2]
         fpath_gcode = sys.argv[3]
 
         if not fpath_gcode.lower().endswith('.gcode') or not fpath_png.lower().endswith('.png'):
             print_help("check format of given files: " + fpath_png + " " + fpath_gcode)
         
-        insert_gcode(opt, fpath_png, fpath_gcode)
+        process_arguments(opt, fpath_png, fpath_gcode)
     else:
         print_help("wrong format of arguments: '" + opt+"'")
