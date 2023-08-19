@@ -35,7 +35,7 @@ def clear_gcode(fpath_gcode):
 
 def process_arguments(opt, fpath_png, fpath_gcode):
     # INSERTIONS ----------------------------------------------------------   
-    if opt == '--insert-all' or opt == '--iall':
+    if opt == '--insert-all' or opt == '-iall':
         tb.insert_png_to_gcode_mini(fpath_png, fpath_gcode)
         tb.insert_png_to_gcode_normal(fpath_png, fpath_gcode)
         tb.insert_png_to_gcode_large(fpath_png, fpath_gcode)
