@@ -14,9 +14,6 @@ WIDTH_MINI,     HEIGHT_MINI = 16,   16
 WIDTH_LARGE,    HEIGHT_LARGE = 240,  320
 
 
-
-
-
 def extract_png_from_gcode_any_recommended(path_to_png: str, path_to_gcode: str):
     '''
     Search for thumbnail of recommended size in gcode file and extract it to given path_to_png.
@@ -38,9 +35,6 @@ def extract_png_from_gcode_any_recommended(path_to_png: str, path_to_gcode: str)
     # ; ...
     # ; 'poslední řádek dlouhý max 78 znaků'
     # ; thumbnail end
-
-    
-    
 
     try:
         thumbnail_normal, thumbnail_large, thumbnail_mini = None, None, None
@@ -157,6 +151,7 @@ def insert_png_to_gcode_custom(path_to_png, path_to_gcode, width=WIDTH_NORMAL, h
     -> large    240x320
     '''
     tmpFile = resize_and_save_image(path_to_png, width, height)
+
     thumbnail = wrap_as_thumbnail(
         generate_base64(tmpFile), width, height
     )
@@ -210,18 +205,17 @@ def insert_header_to_gcode(header, gcode_filepath):
         exit()
 
 
-def generate_base64(source_path, arg=""):
+def generate_base64(source_path, arg="-d"):
     '''returns base64 generated from source path (.png)'''
-    try:
-        output = subprocess.run(
-            ["base64", arg, source_path], capture_output=True, text=True)
-        if (output.returncode != 0):
-            print(output.stderr)
-            exit()
-        return output.stdout
-    except Exception as e:
-        print(e)
-        exit()
+
+    if not source_path.endswith('.png'):
+        raise ValueError("The provided source path is not a .png file.")
+    
+    with open(source_path, 'rb') as image_file:
+        image_data = image_file.read()
+        base64_encoded = base64.b64encode(image_data)
+    
+    return base64_encoded.decode('utf-8')
 
 
 def wrap_as_thumbnail(img_as_base64, img_w, img_h):

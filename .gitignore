@@ -2,6 +2,9 @@
 # Edit at https://www.toptal.com/developers/gitignore?templates=python
 # some staff deleted (cause considered unnecessary)
 
+### VS Code ###
+.vscode
+
 ### Python ###
 # Byte-compiled / optimized / DLL files
 __pycache__/
