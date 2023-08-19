@@ -305,3 +305,11 @@ Delete file with given filepath
 ; 'Base64 encoded PNG data last line, up to 78 characters long'
 ; thumbnail end
 ```
+
+## 6. Limitations and Future Improvements
+- when resizing images, temporary file is created, which is not necessary
+- "clearing" the gcode does not remove empty comments
+- support for specified printers only
+- better CLI tool (messages for user, errors)
+- error handling in general is not ideal
+- unit testing can be added
