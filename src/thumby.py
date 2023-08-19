@@ -1,8 +1,6 @@
 from io import TextIOWrapper
 import os
-import subprocess
 from PIL import Image
-from matplotlib.image import thumbnail
 import base64
 
 
