@@ -203,7 +203,7 @@ def insert_header_to_gcode(header, gcode_filepath):
         exit()
 
 
-def generate_base64(source_path, arg="-d"):
+def generate_base64(source_path):
     '''returns base64 generated from source path (.png)'''
 
     if not source_path.endswith('.png'):
