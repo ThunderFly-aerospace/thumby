@@ -6,7 +6,7 @@ with open('README.md', 'r') as freadme:
 
 setup(
     name='thumby',
-    version='0.4.0',
+    version='0.4.1',
     classifiers=[
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.8",
