@@ -295,3 +295,13 @@ remove_file(filepath)
 Delete file with given filepath
 
 ## 5. Technical Details of Implementations
+1. PNG to Base64: The chosen PNG thumbnail is encoded into a Base64 string
+2. Embedding in GCode: The encoded Base64 string is inserted into the GCode using special comment lines that denote the beginning and the end of the thumbnail data:
+
+```
+; thumbnail begin 'width'x'height' 'len'
+; 'Base64 encoded PNG data line 1, up to 78 characters long'
+; ...
+; 'Base64 encoded PNG data last line, up to 78 characters long'
+; thumbnail end
+```
