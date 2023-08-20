@@ -6,7 +6,11 @@ with open('README.md', 'r') as freadme:
 
 setup(
     name='thumby',
-    version='0.4.0',
+    version='0.4.1',
+    classifiers=[
+        "Programming Language :: Python :: 3",
+        "Programming Language :: Python :: 3.8",
+    ],
     url='https://github.com/ThunderFly-aerospace/thumby/',
     author='Dusan Jansky',
     description='Simple python library for inserting .png thumbnails into gcode files.',
